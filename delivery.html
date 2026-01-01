@@ -41,9 +41,37 @@
     <div></div>
     <div class="brand">CartelBoro</div>
     <nav>
-      <a href="index.html">Начало</a>
-	  <a href="photos.html">Нашите продукти</a>
-      <a href="delivery.html">Доставка</a>
+     <nav>
+  <a href="index.html">Начало</a>
+  <a href="photos.html">Нашите продукти</a>
+  <a href="delivery.html">Доставка</a>
+</nav>
+
+<style>
+  nav a {
+    color:#ffb3b3;
+    text-decoration:none;
+    margin-left:18px;
+    font-weight:700;
+    display:inline-block;
+    margin-bottom:0;
+  }
+
+  /* Мобилна версия */
+  @media(max-width:700px){
+    nav {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+      padding:10px 0;
+    }
+    nav a {
+      margin-left:0;
+      font-size:18px;
+    }
+  }
+</style>
 	  
     </nav>
   </div>
