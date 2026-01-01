@@ -133,19 +133,17 @@
 <footer>© 2026 CartelBoro</footer>
 
 <div class="modal" id="modal">
-  <div class="box">
-    <span class="close" onclick="closeModal()">✕</span>
-    <h3>Поръчка</h3>
-    
-	<p>Свържи се директно в Telegram за бърза обработка.</p>
-	
-    
-	
-	
-	
-	<a class="btn" href="https://t.me/CartelBoroOrders?text=Здравейте,%20искам%20да%20поръчам">@CartelBoroOrders</a>
+  <div class="box" style="display:flex;flex-direction:column;gap:20px;padding:30px;max-width:450px;">
+    <span class="close" onclick="closeModal()" style="align-self:flex-end;font-size:22px;color:#ff9a9a;cursor:pointer;">✕</span>
+    <h3 style="text-align:center;color:var(--red2);margin-bottom:10px;">Поръчка</h3>
+    <p style="text-align:center;color:#ddd;font-size:16px;line-height:1.5;">
+      Свържи се директно в Telegram за бърза обработка.
+    </p>
+    <a class="btn" href="https://t.me/CartelBoroOrders?text=Здравейте,%20искам%20да%20поръчам" 
+       style="align-self:center;padding:14px 30px;font-weight:800;">@CartelBoroOrders</a>
   </div>
 </div>
+
 
 <script>
   function setCur(c,el){
