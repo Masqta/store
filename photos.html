@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Нашите Продукти - CartelBoro</title>
+  <style>
+    :root{--red:#c00000;--red2:#ff2a2a;--dark:#070707;--card:#0f0f0f;--muted:#cfcfcf}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,Segoe UI,Arial;background:radial-gradient(1200px 600px at 50% -10%, #2a0000, #000);color:#fff;overflow-x:hidden}
+
+    header{position:relative}
+    .topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 22px;background:linear-gradient(90deg,#300,#900,#300);box-shadow:0 10px 40px rgba(255,0,0,.35)}
+    .brand{justify-self:center;font-weight:900;letter-spacing:3px;font-size:28px;text-transform:uppercase}
+    nav{justify-self:end}
+    nav a{color:#ffb3b3;text-decoration:none;margin-left:18px;font-weight:700}
+    nav a:hover{color:#fff}
+
+    .container{max-width:1200px;margin:auto;padding:40px 20px}
+    .section{margin-top:80px;opacity:0;transform:translateY(50px);transition:all .8s ease-in-out}
+    .title{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:26px}
+    .title h2{grid-column:2;margin:0;color:var(--red2)}
+    .title .line{height:3px;background:var(--red)}
+    .title .line.left{grid-column:1;margin-right:14px}
+    .title .line.right{grid-column:3;margin-left:14px}
+
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;justify-items:center}
+    @media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:700px){.grid{grid-template-columns:1fr}}
+
+    .card{background:linear-gradient(180deg,var(--card),#050505);border:1px solid #300;border-radius:16px;padding:16px;box-shadow:0 10px 40px rgba(255,0,0,.18);text-align:center;transition:.25s;overflow:hidden}
+    .card img{max-width:100%;border-radius:12px;margin-bottom:8px}
+    .card h3{margin:4px 0;color:#ff9a9a;font-size:16px}
+    .card .label{color:#ddd;font-size:14px;margin-bottom:6px}
+
+    footer{margin-top:100px;background:#000;padding:26px;text-align:center;color:#aaa}
+  </style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div></div>
+    <div class="brand">CartelBoro</div>
+    <nav>
+      <a href="index.html">Начало</a>
+	  <a href="photos.html">Нашите продукти</a>
+      <a href="delivery.html">Доставка</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <div class="title"><div class="line left"></div><h2>Нашите Продукти</h2><div class="line right"></div></div>
+    <p style="text-align:center;color:#ddd;margin-bottom:30px;">Това са нашите продукти – висококачествени!</p>
+    <div class="grid">
+      <!-- BGN -->
+      <div class="card">
+        <div class="label">50 ЛВ</div>
+        <img src="images/50bgn.jpg" alt="50 BGN">
+        <h3>Високо качество</h3>
+      </div>
+      <div class="card">
+        <div class="label">100 ЛВ</div>
+        <img src="images/100bgn.jpg" alt="100 BGN">
+        <h3>Високо качество</h3>
+      </div>
+      <!-- EUR -->
+      <div class="card">
+        <div class="label">20 EUR</div>
+        <img src="images/20eur.jpg" alt="20 EUR">
+        <h3>Високо качество</h3>
+      </div>
+      <div class="card">
+        <div class="label">50 EUR</div>
+        <img src="images/50eur.jpg" alt="50 EUR">
+        <h3>Високо качество</h3>
+      </div>
+      <div class="card">
+        <div class="label">100 EUR</div>
+        <img src="images/100eur.jpg" alt="100 EUR">
+        <h3>Високо качество</h3>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="title"><div class="line left"></div><h2>Специални елемти/Водни знаци</h2><div class="line right"></div></div>
+
+<footer>© 2026 CartelBoro</footer>
+
+<script>
+  /* Scroll reveal animation */
+  const faders = document.querySelectorAll('.section');
+  const appearOptions = {threshold:0.2};
+  const appearOnScroll = new IntersectionObserver(function(entries,observer){
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';observer.unobserve(entry.target);}
+    });
+  },appearOptions);
+  faders.forEach(fader=>appearOnScroll.observe(fader));
+</script>
+</body>
+</html>

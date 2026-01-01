@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartelBoro</title>
+  <style>
+    :root{--red:#c00000;--red2:#ff2a2a;--dark:#070707;--card:#0f0f0f;--muted:#cfcfcf}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,Segoe UI,Arial;background:radial-gradient(1200px 600px at 50% -10%, #2a0000, #000);color:#fff;overflow-x:hidden}
+
+    /* HEADER */
+    header{position:relative}
+    .topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 22px;background:linear-gradient(90deg,#300,#900,#300);box-shadow:0 10px 40px rgba(255,0,0,.35)}
+    .brand{justify-self:center;font-weight:900;letter-spacing:3px;font-size:28px;text-transform:uppercase}
+    nav{justify-self:end}
+    nav a{color:#ffb3b3;text-decoration:none;margin-left:18px;font-weight:700}
+    nav a:hover{color:#fff}
+
+    /* HERO */
+    .hero{padding:110px 20px 90px;text-align:center}
+    .hero h1{margin:0;font-size:56px;color:var(--red2);text-shadow:0 0 40px rgba(255,42,42,.45);opacity:0;transform:translateY(30px);transition:all .8s ease-in-out}
+    .hero p{max-width:720px;margin:16px auto 28px;color:#ddd;opacity:0;transform:translateY(30px);transition:all .8s ease-in-out .3s}
+    .cta{display:flex;justify-content:center;gap:16px;opacity:0;transform:translateY(30px);transition:all .8s ease-in-out .6s}
+
+    .btn{padding:14px 30px;border-radius:40px;border:1px solid #500;background:linear-gradient(180deg,var(--red),#800);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 0 30px rgba(255,0,0,.45);transition:.25s}
+    .btn.alt{background:#0b0b0b}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(255,0,0,.8)}
+
+    /* LAYOUT */
+    .container{max-width:1200px;margin:auto;padding:40px 20px}
+    .section{margin-top:80px;opacity:0;transform:translateY(50px);transition:all .8s ease-in-out}
+    .title{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:26px}
+    .title h2{grid-column:2;margin:0;color:var(--red2)}
+    .title .line{height:3px;background:var(--red)}
+    .title .line.left{grid-column:1;margin-right:14px}
+    .title .line.right{grid-column:3;margin-left:14px}
+
+    /* PRICES */
+    .toolbar{display:flex;justify-content:center;gap:10px;margin-bottom:18px}
+    .chip{padding:8px 16px;border-radius:20px;border:1px solid #400;background:#0c0c0c;color:#fff;cursor:pointer}
+    .chip.active{background:var(--red)}
+    .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;justify-items:stretch}
+    .grid.two{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.grid.two{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:700px){.grid{grid-template-columns:1fr}.grid.two{grid-template-columns:1fr}}
+
+    .card{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(180deg,var(--card),#050505);border:1px solid #300;border-radius:16px;padding:26px;box-shadow:0 10px 40px rgba(255,0,0,.18);transition:.25s;position:relative;overflow:hidden}
+    .card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(255,0,0,.45)}
+    .card h3{margin:0 0 10px;color:#ff9a9a}
+    .price{font-size:30px;font-weight:900}
+    .muted{color:var(--muted);font-size:14px}
+    .stock{color:#ff6666;font-weight:700;margin-top:6px}
+
+    /* STATS / TRUST */
+    .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;text-align:center}
+    @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:500px){.stats{grid-template-columns:1fr}}
+    .stat{background:#0c0c0c;border:1px solid #300;border-radius:16px;padding:22px}
+    .stat .num{font-size:34px;font-weight:900;color:var(--red2)}
+
+    /* TELEGRAM */
+    .tg{margin-top:90px;background:linear-gradient(135deg,#120000,#000);border:1px solid #300;border-radius:22px;padding:40px;text-align:center;opacity:0;transform:translateY(50px);transition:all .8s ease-in-out}
+
+    footer{margin-top:100px;background:#000;padding:26px;text-align:center;color:#aaa}
+
+    /* MODAL */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000}
+    .modal .box{background:#0b0b0b;border:1px solid #400;border-radius:18px;max-width:420px;width:92%;padding:26px;box-shadow:0 30px 80px rgba(255,0,0,.5)}
+    .close{float:right;cursor:pointer;color:#ff9a9a}
+  </style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div></div>
+    <div class="brand">CartelBoro</div>
+    <nav>
+      <a href="index.html">Начало</a>
+	  <a href="photos.html">Нашите продукти</a>
+      <a href="delivery.html">Доставка</a>
+    </nav>
+  </div>
+  <div class="hero">
+    <h1>CartelMarket 2026</h1>
+    <p>Все по силни!, бърза доставка и директен контакт в Telegram.</p>
+    <div class="cta">
+      <a class="btn" href="#prices">Виж цени</a>
+      <a class="btn alt" href="#" onclick="openModal()">Поръчай</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section id="prices" class="section">
+    <div class="title"><div class="line left"></div><h2>Цени</h2><div class="line right"></div></div>
+    <div class="toolbar">
+      <button class="chip active" onclick="setCur('BGN',this)">BGN</button>
+      <button class="chip" onclick="setCur('EUR',this)">EUR</button>
+    </div>
+	                  
+    <div id="bgn" class="grid two">
+      <div class="card"><h3>€150</h3><div class="price">5,000 BGN</div><div class="muted">Наличност</div><div class="stock">Ограничено количество</div></div>
+      <div class="card"><h3>€250</h3><div class="price">10,000 BGN</div><div class="muted">Наличност</div><div class="stock">Ограничено количество!</div></div>
+    </div>
+    <div id="eur" class="grid" style="display:none">
+      <div class="card"><h3>€250</h3><div class="price">€2500</div></div>
+      <div class="card"><h3>€330</h3><div class="price">€5500</div></div>
+      <div class="card"><h3>€490</h3><div class="price">€8500</div></div>
+      <div class="card"><h3>€650</h3><div class="price">€12,500</div></div>
+      <div class="card"><h3>€1250</h3><div class="price">€20,000</div></div>
+	</div>
+  </section>
+
+  <section class="section">
+    <div class="title"><div class="line left"></div><h2>Доверие</h2><div class="line right"></div></div>
+    <div class="stats">
+      <div class="stat"><div class="num" id="clients">0</div><div>Доволни клиенти</div></div>
+      <div class="stat"><div class="num">24–48ч</div><div>Доставка</div></div>
+      <div class="stat"><div class="num">100%</div><div>Дискретност</div></div>
+      <div class="stat"><div class="num">TG</div><div>Директен контакт</div></div>
+      <div class="stat"><div class="num">Premium</div><div>Качество</div></div>
+    </div>
+  </section>
+
+  <section class="tg">
+    <div class="title"><div class="line left"></div><h2>Telegram</h2><div class="line right"></div></div>
+    <p id="tg-live" style="margin-bottom:12px;"></p>
+    <a class="btn" href="https://t.me/CartelBoroOrders?text=Здравейте,%20искам%20да%20поръчам">Свържи се директно</a>
+  </section>
+</main>
+
+<footer>© 2026 CartelBoro</footer>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <span class="close" onclick="closeModal()">✕</span>
+    <h3>Поръчка</h3>
+    
+	<p>Свържи се директно в Telegram за бърза обработка.</p>
+	
+    
+	
+	
+	
+	<a class="btn" href="https://t.me/CartelBoroOrders?text=Здравейте,%20искам%20да%20поръчам">@CartelBoroOrders</a>
+  </div>
+</div>
+
+<script>
+  function setCur(c,el){
+    document.getElementById('bgn').style.display = c==='BGN'?'grid':'none';
+    document.getElementById('eur').style.display = c==='EUR'?'grid':'none';
+    document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function openModal(){document.getElementById('modal').style.display='flex'}
+  function closeModal(){document.getElementById('modal').style.display='none'}
+
+  /* Scroll reveal */
+  const faders = document.querySelectorAll('.hero h1, .hero p, .cta, .section, .tg');
+  const appearOptions = {threshold:0.2};
+  const appearOnScroll = new IntersectionObserver(function(entries,observer){
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';observer.unobserve(entry.target);}
+    });
+  },appearOptions);
+  faders.forEach(fader=>appearOnScroll.observe(fader));
+
+  /* Animated clients counter */
+  let clients = 0;
+  const targetClients = 5000;
+  const clientsEl = document.getElementById('clients');
+  function countClients(){
+    if(clients < targetClients){
+      clients += Math.ceil(targetClients/100);
+      if(clients > targetClients) clients=targetClients;
+      clientsEl.textContent = clients+'+';
+      requestAnimationFrame(countClients);
+    }
+  }
+  const statSection = document.querySelector('.stats');
+  const statObserver = new IntersectionObserver(function(entries,observer){
+    entries.forEach(entry=>{if(entry.isIntersecting){countClients();observer.unobserve(entry.target);}});
+  }, {threshold:0.5});
+  statObserver.observe(statSection);
+</script>
+</body>
+</html>

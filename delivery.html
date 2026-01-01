@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CartelBoro - Как да поръчам и Доставка</title>
+<style>
+  :root{--red:#c00000;--red2:#ff2a2a;--dark:#070707;--card:#0f0f0f;--muted:#cfcfcf}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,Segoe UI,Arial;background:radial-gradient(1200px 600px at 50% -10%, #2a0000, #000);color:#fff;overflow-x:hidden}
+
+  header{position:relative}
+  .topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 22px;background:linear-gradient(90deg,#300,#900,#300);box-shadow:0 10px 40px rgba(255,0,0,.35)}
+  .brand{justify-self:center;font-weight:900;letter-spacing:3px;font-size:28px;text-transform:uppercase}
+  nav{justify-self:end}
+  nav a{color:#ffb3b3;text-decoration:none;margin-left:18px;font-weight:700}
+  nav a:hover{color:#fff}
+
+  .container{max-width:1200px;margin:auto;padding:40px 20px}
+  h1,h2{color:var(--red2);text-align:center;margin-bottom:20px;opacity:0;transform:translateY(30px);transition:all .8s ease-in-out}
+  .section{margin-top:60px;opacity:0;transform:translateY(50px);transition:all .8s ease-in-out}
+  ul{list-style:none;padding-left:0}
+  ul li{background:linear-gradient(90deg,#200000,#400000);padding:14px 18px;margin-bottom:10px;border-left:4px solid var(--red);border-radius:6px}
+
+  .cities{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+  .city{background:linear-gradient(135deg,#100000,#200000);padding:12px;border-radius:12px;text-align:center;box-shadow:0 5px 20px rgba(255,0,0,.3);opacity:0;transform:translateY(20px);transition:all .6s ease-in-out}
+  @media(max-width:600px){.cities{grid-template-columns:1fr}}
+
+  .btn{padding:12px 28px;border-radius:40px;border:1px solid #500;background:linear-gradient(180deg,var(--red),#800);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 0 30px rgba(255,0,0,.45);transition:.25s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(255,0,0,.8)}
+
+  .crypto-alert{background:var(--red2);color:#000;font-weight:900;text-align:center;padding:20px;font-size:28px;border-radius:12px;margin-bottom:40px;text-transform:uppercase;animation: pulse 1s infinite alternate}
+  @keyframes pulse {0%{transform:scale(1)}100%{transform:scale(1.05)}}
+
+  .delivery-info{background:#200000;padding:18px;border-left:4px solid var(--red);border-radius:8px;margin-top:20px;font-weight:700;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div></div>
+    <div class="brand">CartelBoro</div>
+    <nav>
+      <a href="index.html">Начало</a>
+	  <a href="photos.html">Нашите продукти</a>
+      <a href="delivery.html">Доставка</a>
+	  
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="crypto-alert">КАК ДА ПОРЪЧАМ?</div>
+  <section class="section">
+  <ul>
+    <li>Как да поръчам?</li>
+    <ul>
+      <li>1. Пишете ни в Telegram със следната информация.</li>
+      <li>2. Изберете пакет и номинал.</li>
+      <li>3. Въведете адрес за доставка.</li>
+      <li>4. Изберете метод за плащане: <strong>само Крипто</strong>.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+ <main class="container">
+  <div class="crypto-alert">Доставяме в следните градове!</div>
+    <p style="text-align:center; margin-bottom:20px;">Доставяме в следните градове в България:</p>
+    <div class="cities">
+      <div class="city">София</div>
+      <div class="city">Пловдив</div>
+      <div class="city">Варна</div>
+      <div class="city">Бургас</div>
+      <div class="city">Русе</div>
+      <div class="city">Стара Загора</div>
+      <div class="city">Плевен</div>
+      <div class="city">Сливен</div>
+      <div class="city">Добрич</div>
+      <div class="city">Шумен</div>
+      <div class="city">Перник</div>
+      <div class="city">Ямбол</div>
+      <div class="city">Хасково</div>
+      <div class="city">Кърджали</div>
+      <div class="city">Велико Търново</div>
+      <div class="city">Габрово</div>
+      <div class="city">Пазарджик</div>
+      <div class="city">Видин</div>
+      <div class="city">Монтана</div>
+      <div class="city">Търговище</div>
+    </div>
+    <div class="delivery-info">Скриваме пакета на скрито място в района за доставка и даваме локация на Google Maps със координати за вземане без лични срещи!</div>
+  </section>
+
+  <section style="text-align:center; margin-top:60px">
+    <a class="btn" href="index.html">Обратно към Началната страница</a>
+  </section>
+</main>
+
+<footer style="text-align:center; padding:26px; background:#000">© 2026 CartelBoro</footer>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const cities = document.querySelectorAll('.city');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.opacity='1';
+        entry.target.style.transform='translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.2});
+  sections.forEach(sec => observer.observe(sec));
+  cities.forEach(city => observer.observe(city));
+</script>
+</body>
+</html>
